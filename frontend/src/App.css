@@ -2,51 +2,17 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  margin: 0;
-  min-height: 100%;
-}
-
-body {
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
-  background: #080c16;
-  color: #f8fafc;
-}
-
-button,
-textarea {
-  font: inherit;
-}
-
-/* =========================
-   APP
-========================= */
-
 .app {
   min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-
+  width: 100%;
+  color: #e5e7eb;
   background:
     radial-gradient(
-      circle at 50% 0%,
-      #172554 0%,
-      transparent 36%
+      circle at 50% -20%,
+      rgba(99, 102, 241, 0.18),
+      transparent 38%
     ),
-    #080c16;
-
-  color: #f8fafc;
+    #080b12;
 }
 
 /* =========================
@@ -55,15 +21,21 @@ textarea {
 
 .header {
   width: 100%;
-  margin: 0;
-
-  padding: 22px max(28px, calc((100vw - 1000px) / 2));
-
+  min-height: 76px;
+  padding: 16px max(24px, calc((100vw - 1200px) / 2));
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(8, 11, 18, 0.78);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .brand {
@@ -90,56 +62,52 @@ textarea {
 
   color: white;
 
-  flex-shrink: 0;
+  box-shadow:
+    0 8px 24px rgba(99, 102, 241, 0.25);
 }
 
 .brand h1 {
   margin: 0;
-
-  font-size: 20px;
+  color: #ffffff;
+  font-size: 19px;
   font-weight: 700;
-
-  letter-spacing: -0.4px;
+  letter-spacing: -0.02em;
 }
 
 .brand p {
-  margin: 3px 0 0;
-
-  color: #64748b;
-
+  margin: 2px 0 0;
+  color: #8b93a7;
   font-size: 12px;
 }
-
-/* =========================
-   CLEAR BUTTON
-========================= */
 
 .clear-button {
   display: flex;
   align-items: center;
   gap: 7px;
 
-  padding: 8px 10px;
+  padding: 9px 13px;
 
-  border: none;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 9px;
 
-  background: transparent;
+  background: rgba(255, 255, 255, 0.035);
+  color: #aeb5c4;
 
-  color: #94a3b8;
-
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
 
   cursor: pointer;
 
   transition:
-    background 0.2s,
-    color 0.2s;
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .clear-button:hover {
-  background: #1e293b;
-  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* =========================
@@ -147,14 +115,9 @@ textarea {
 ========================= */
 
 .main {
-  width: 100%;
-  max-width: 1000px;
-
+  width: min(100% - 40px, 1000px);
   margin: 0 auto;
-
-  padding: 72px 24px;
-
-  flex: 1;
+  padding: 72px 0 80px;
 }
 
 /* =========================
@@ -163,59 +126,77 @@ textarea {
 
 .hero {
   text-align: center;
-
-  margin-bottom: 42px;
+  margin-bottom: 38px;
 }
 
 .hero-icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 20px;
+
   display: flex;
+  align-items: center;
   justify-content: center;
 
-  margin-bottom: 16px;
+  border-radius: 16px;
 
-  color: #a5b4fc;
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.25),
+      rgba(139, 92, 246, 0.18)
+    );
+
+  border: 1px solid rgba(139, 92, 246, 0.25);
+
+  box-shadow:
+    0 12px 40px rgba(99, 102, 241, 0.12);
 }
 
 .hero h2 {
   margin: 0;
 
-  font-size: 32px;
-  font-weight: 700;
+  color: #ffffff;
 
-  letter-spacing: -0.8px;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.12;
+  font-weight: 750;
+
+  letter-spacing: -0.035em;
 }
 
 .hero p {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
 
-  color: #94a3b8;
+  color: #858da0;
 
   font-size: 15px;
+  line-height: 1.6;
 }
 
 /* =========================
-   CHAT CARD
+   CHAT INPUT CARD
 ========================= */
 
 .chat-card {
-  width: 100%;
+  padding: 20px;
 
-  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
 
-  background: rgba(15, 23, 42, 0.9);
-
-  border: 1px solid #263244;
-
-  border-radius: 18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.025)
+    );
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3),
-    inset 0 1px rgba(255, 255, 255, 0.03);
+    0 20px 70px rgba(0, 0, 0, 0.2);
 }
-
-/* =========================
-   INPUT HEADER
-========================= */
 
 .input-header {
   display: flex;
@@ -224,98 +205,85 @@ textarea {
 
   margin-bottom: 12px;
 
-  color: #cbd5e1;
+  color: #c5cad5;
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
-/* =========================
-   TEXTAREA
-========================= */
+.input-header svg {
+  color: #818cf8;
+}
 
 .chat-card textarea {
-  display: block;
-
   width: 100%;
-  min-width: 100%;
-
-  min-height: 190px;
-
-  padding: 17px 18px;
+  min-height: 130px;
 
   resize: vertical;
 
-  border: 1px solid #334155;
-  border-radius: 12px;
+  padding: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
 
   outline: none;
 
-  background: #0a1020;
+  background: rgba(0, 0, 0, 0.2);
+  color: #f3f4f6;
 
-  color: #f8fafc;
-
+  font-family: inherit;
   font-size: 15px;
   line-height: 1.6;
 
   transition:
-    border-color 0.2s,
-    box-shadow 0.2s,
-    background 0.2s;
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .chat-card textarea::placeholder {
-  color: #64748b;
+  color: #626a7b;
 }
 
 .chat-card textarea:focus {
-  border-color: #6366f1;
+  border-color: rgba(129, 140, 248, 0.55);
 
-  background: #090f1e;
+  background: rgba(0, 0, 0, 0.28);
 
   box-shadow:
-    0 0 0 3px rgba(99, 102, 241, 0.15);
+    0 0 0 3px rgba(99, 102, 241, 0.09);
 }
 
-/* =========================
-   INPUT FOOTER
-========================= */
+.chat-card textarea:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
 .input-footer {
-  width: 100%;
-
-  margin-top: 14px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: 15px;
+  margin-top: 12px;
 }
 
 .input-footer > span {
-  color: #64748b;
-
-  font-size: 13px;
+  color: #626a7b;
+  font-size: 12px;
 }
-
-/* =========================
-   SEND BUTTON
-========================= */
 
 .send-button {
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 8px;
 
-  min-width: 125px;
+  min-width: 105px;
 
-  padding: 11px 18px;
+  padding: 10px 16px;
 
   border: none;
-  border-radius: 10px;
+  border-radius: 9px;
 
   background: linear-gradient(
     135deg,
@@ -323,40 +291,42 @@ textarea {
     #7c3aed
   );
 
-  color: white;
+  color: #ffffff;
 
-  font-size: 14px;
+  font-family: inherit;
+  font-size: 13px;
   font-weight: 600;
 
   cursor: pointer;
 
+  box-shadow:
+    0 8px 24px rgba(99, 102, 241, 0.2);
+
   transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    opacity 0.2s;
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .send-button:hover:not(:disabled) {
   transform: translateY(-1px);
 
   box-shadow:
-    0 8px 25px rgba(99, 102, 241, 0.3);
+    0 12px 30px rgba(99, 102, 241, 0.28);
+}
+
+.send-button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .send-button:disabled {
   opacity: 0.45;
-
   cursor: not-allowed;
-
-  transform: none;
+  box-shadow: none;
 }
 
-/* =========================
-   LOADING
-========================= */
-
 .spin {
-  animation: spin 0.8s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -370,44 +340,48 @@ textarea {
 ========================= */
 
 .error {
-  width: 100%;
+  margin-top: 18px;
+  padding: 13px 16px;
 
-  margin-top: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
 
-  padding: 14px 16px;
+  background: rgba(239, 68, 68, 0.08);
 
-  border: 1px solid #7f1d1d;
-  border-radius: 12px;
+  color: #fca5a5;
 
-  background: rgba(127, 29, 29, 0.2);
-
-  color: #fecaca;
-
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* =========================
-   RESPONSE
+   AI RESPONSE
 ========================= */
 
 .response-card {
-  width: 100%;
-
   margin-top: 24px;
 
-  padding: 24px;
+  overflow: hidden;
 
-  background: #0f172a;
-
-  border: 1px solid #263244;
-
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
 
-  animation: fadeIn 0.3s ease;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.022)
+    );
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.2);
 }
 
 .response-header {
-  margin-bottom: 18px;
+  padding: 15px 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .response-title {
@@ -415,31 +389,275 @@ textarea {
   align-items: center;
   gap: 8px;
 
-  color: #a5b4fc;
+  color: #d5d9e2;
 
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.response-title svg {
+  color: #818cf8;
 }
 
 .response-content {
-  color: #cbd5e1;
+  padding: 22px 24px;
+
+  color: #d5dae4;
 
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.75;
 
-  white-space: pre-wrap;
+  overflow-x: auto;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
+/* =========================
+   MARKDOWN
+========================= */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.response-content h1,
+.response-content h2,
+.response-content h3,
+.response-content h4 {
+  color: #ffffff;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.02em;
+}
+
+.response-content h1 {
+  margin: 4px 0 18px;
+  font-size: 28px;
+}
+
+.response-content h2 {
+  margin: 28px 0 13px;
+  font-size: 22px;
+}
+
+.response-content h3 {
+  margin: 23px 0 10px;
+  font-size: 18px;
+}
+
+.response-content h4 {
+  margin: 20px 0 9px;
+  font-size: 16px;
+}
+
+.response-content p {
+  margin: 12px 0;
+}
+
+.response-content p:first-child {
+  margin-top: 0;
+}
+
+.response-content p:last-child {
+  margin-bottom: 0;
+}
+
+.response-content strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.response-content em {
+  color: #c8cdd8;
+}
+
+.response-content ul,
+.response-content ol {
+  margin: 13px 0;
+  padding-left: 25px;
+}
+
+.response-content li {
+  margin: 7px 0;
+  padding-left: 3px;
+}
+
+.response-content li::marker {
+  color: #818cf8;
+}
+
+/* =========================
+   MARKDOWN LINKS
+========================= */
+
+.response-content a {
+  color: #a5b4fc;
+  text-decoration: none;
+}
+
+.response-content a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   BLOCKQUOTES
+========================= */
+
+.response-content blockquote {
+  margin: 18px 0;
+  padding: 12px 17px;
+
+  border-left: 3px solid #6366f1;
+  border-radius: 0 8px 8px 0;
+
+  background: rgba(99, 102, 241, 0.07);
+
+  color: #b9c0cf;
+}
+
+.response-content blockquote p {
+  margin: 0;
+}
+
+/* =========================
+   INLINE CODE
+========================= */
+
+.response-content code {
+  padding: 2px 6px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  color: #c4b5fd;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.9em;
+}
+
+/* =========================
+   CODE BLOCKS
+========================= */
+
+.response-content pre {
+  margin: 18px 0;
+
+  padding: 16px;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.response-content pre code {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #d7dce6;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================
+   TABLES
+========================= */
+
+.response-content table {
+  width: 100%;
+
+  margin: 20px 0;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+}
+
+.response-content th,
+.response-content td {
+  padding: 11px 13px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  text-align: left;
+
+  vertical-align: top;
+}
+
+.response-content th:last-child,
+.response-content td:last-child {
+  border-right: none;
+}
+
+.response-content tr:last-child td {
+  border-bottom: none;
+}
+
+.response-content th {
+  background: rgba(255, 255, 255, 0.07);
+
+  color: #ffffff;
+
+  font-weight: 650;
+}
+
+.response-content td {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.response-content tr:hover td {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* =========================
+   HORIZONTAL RULE
+========================= */
+
+.response-content hr {
+  height: 1px;
+
+  margin: 25px 0;
+
+  border: none;
+
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* =========================
+   MATHEMATICAL EQUATIONS
+========================= */
+
+.response-content .katex-display {
+  margin: 24px 0;
+
+  padding: 18px 14px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  text-align: center;
+}
+
+.response-content .katex {
+  font-size: 1.12em;
 }
 
 /* =========================
@@ -447,58 +665,87 @@ textarea {
 ========================= */
 
 footer {
-  padding: 24px;
+  width: 100%;
+
+  padding: 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 9px;
 
-  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 
-  color: #475569;
+  color: #5e6676;
 
-  font-size: 13px;
+  font-size: 12px;
 }
 
 footer span:first-child {
-  color: #94a3b8;
+  color: #858da0;
+  font-weight: 600;
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .header {
-    padding: 18px 16px;
+    padding: 14px 18px;
+  }
+
+  .main {
+    width: min(100% - 24px, 1000px);
+    padding: 48px 0 60px;
+  }
+
+  .hero {
+    margin-bottom: 28px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .chat-card {
+    padding: 15px;
+  }
+
+  .input-footer {
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .input-footer > span {
+    max-width: 150px;
+    line-height: 1.4;
+  }
+
+  .response-content {
+    padding: 18px;
+    font-size: 14px;
+  }
+
+  .response-content h1 {
+    font-size: 24px;
+  }
+
+  .response-content h2 {
+    font-size: 20px;
+  }
+
+  .response-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 
   .brand p {
     display: none;
-  }
-
-  .main {
-    padding: 50px 16px;
-  }
-
-  .hero h2 {
-    font-size: 25px;
-  }
-
-  .chat-card {
-    padding: 18px;
-  }
-
-  .chat-card textarea {
-    min-height: 160px;
-  }
-
-  .input-footer {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .send-button {
-    width: 100%;
   }
 }
