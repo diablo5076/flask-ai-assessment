@@ -15,9 +15,7 @@
     #080b12;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header {
   width: 100%;
@@ -110,9 +108,7 @@
   border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .main {
   width: min(100% - 40px, 1000px);
@@ -120,9 +116,7 @@
   padding: 72px 0 80px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
   text-align: center;
@@ -177,9 +171,7 @@
   line-height: 1.6;
 }
 
-/* =========================
-   CHAT INPUT CARD
-========================= */
+/* CHAT INPUT CARD */
 
 .chat-card {
   padding: 20px;
@@ -335,9 +327,7 @@
   }
 }
 
-/* =========================
-   ERROR
-========================= */
+/* ERROR */
 
 .error {
   margin-top: 18px;
@@ -353,9 +343,7 @@
   font-size: 13px;
 }
 
-/* =========================
-   AI RESPONSE
-========================= */
+/* AI RESPONSE */
 
 .response-card {
   margin-top: 24px;
@@ -410,9 +398,7 @@
   overflow-x: auto;
 }
 
-/* =========================
-   MARKDOWN
-========================= */
+/* MARKDOWN */
 
 .response-content h1,
 .response-content h2,
@@ -481,9 +467,7 @@
   color: #818cf8;
 }
 
-/* =========================
-   MARKDOWN LINKS
-========================= */
+/* MARKDOWN LINKS */
 
 .response-content a {
   color: #a5b4fc;
@@ -494,9 +478,7 @@
   text-decoration: underline;
 }
 
-/* =========================
-   BLOCKQUOTES
-========================= */
+/* BLOCKQUOTES */
 
 .response-content blockquote {
   margin: 18px 0;
@@ -514,9 +496,7 @@
   margin: 0;
 }
 
-/* =========================
-   INLINE CODE
-========================= */
+/* INLINE CODE */
 
 .response-content code {
   padding: 2px 6px;
@@ -537,9 +517,7 @@
   font-size: 0.9em;
 }
 
-/* =========================
-   CODE BLOCKS
-========================= */
+/* CODE BLOCKS */
 
 .response-content pre {
   margin: 18px 0;
@@ -567,9 +545,7 @@
   line-height: 1.6;
 }
 
-/* =========================
-   TABLES
-========================= */
+/* TABLES */
 
 .response-content table {
   width: 100%;
@@ -622,9 +598,7 @@
   background: rgba(255, 255, 255, 0.035);
 }
 
-/* =========================
-   HORIZONTAL RULE
-========================= */
+/* HORIZONTAL RULE */
 
 .response-content hr {
   height: 1px;
@@ -636,9 +610,7 @@
   background: rgba(255, 255, 255, 0.09);
 }
 
-/* =========================
-   MATHEMATICAL EQUATIONS
-========================= */
+/* MATHEMATICAL EQUATIONS */
 
 .response-content .katex-display {
   margin: 24px 0;
@@ -660,9 +632,7 @@
   font-size: 1.12em;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
   width: 100%;
@@ -686,9 +656,7 @@ footer span:first-child {
   font-weight: 600;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media (max-width: 700px) {
   .header {

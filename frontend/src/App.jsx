@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Send,
-  Sparkles,
-  Trash2,
-  MessageSquare,
-  LoaderCircle,
-} from "lucide-react";
+import { Send, Sparkles, Trash2, MessageSquare, LoaderCircle } from "lucide-react";
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -15,78 +9,27 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import "./App.css";
 
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://127.0.0.1:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000/api";
 
-/*
- * Normalize AI-generated Markdown + LaTeX.
- *
- * AI responses can contain:
- *
- * \[ equation \]
- * \\[ equation \\]
- * \( inline equation \)
- * \\( inline equation \\)
- *
- * remark-math expects:
- *
- * $$ equation $$
- * $ inline equation $
- */
  const formatAIResponse = (text) => {
    if (!text) return "";
  
    let formatted = text;
- 
-   // -----------------------------------------
-   // 1. Normalize escaped display delimiters
-   // -----------------------------------------
- 
-   // \[ ... \] or \\[ ... \\]
+
    formatted = formatted.replace(
      /\\+\[\s*([\s\S]*?)\s*\\+\]/g,
      (_, equation) => `\n\n$$\n${equation.trim()}\n$$\n\n`
-   );
- 
-   // -----------------------------------------
-   // 2. Convert existing multiline $ equations
-   // -----------------------------------------
- 
-   // Handles:
-   //
-   // $
-   // equation
-   // $
-   //
-   // and converts it to:
-   //
-   // $$
-   // equation
-   // $$
+   ); 
  
    formatted = formatted.replace(
      /(?:^|\n)\s*\$\s*\n([\s\S]*?)\n\s*\$(?=\n|$)/g,
      (_, equation) => `\n\n$$\n${equation.trim()}\n$$\n\n`
    );
- 
-   // -----------------------------------------
-   // 3. Normalize escaped inline delimiters
-   // -----------------------------------------
- 
+  
    formatted = formatted.replace(
      /\\+\(\s*([\s\S]*?)\s*\\+\)/g,
      (_, equation) => `$${equation.trim()}$`
    );
- 
-   // -----------------------------------------
-   // 4. Clean AI-generated LaTeX artifacts
-   // -----------------------------------------
- 
-   // The model sometimes generates:
-   //
-   // ;\xrightarrow{...};
-   //
-   // Remove the unnecessary semicolons around the arrow.
  
    formatted = formatted.replace(
      /;\s*(\\xrightarrow)/g,
@@ -184,8 +127,7 @@ function App() {
             <span>Your question</span>
           </div>
 
-          <textarea
-            value={question}
+          <textarea value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
@@ -201,11 +143,7 @@ function App() {
           <div className="input-footer">
             <span>Press Enter to send</span>
 
-            <button
-              className="send-button"
-              onClick={askQuestion}
-              disabled={!question.trim() || loading}
-            >
+            <button className="send-button" onClick={askQuestion} disabled={!question.trim() || loading}>
               {loading ? (
                 <>
                   <LoaderCircle className="spin" size={18} />
@@ -237,10 +175,7 @@ function App() {
             </div>
 
             <div className="response-content">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm, remarkMath]}
-                rehypePlugins={[rehypeKatex]}
-              >
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
                 {formatAIResponse(response)}
               </ReactMarkdown>
             </div>
